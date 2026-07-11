@@ -6,7 +6,9 @@ import { Section } from '../ui/Section'
 import { Container } from '../ui/Container'
 import { Button } from '../ui/Button'
 import { FadeIn } from '../motion/FadeIn'
-import { GoldParticles } from '../decorative/GoldParticles'
+import { GoldSunburst } from '../decorative/GoldSunburst'
+import { LotusMotif } from '../decorative/LotusMotif'
+import { FloralSprig } from '../decorative/FloralSprig'
 
 export function FinalCTASection() {
   const waUrl = buildWhatsAppUrl(
@@ -27,7 +29,10 @@ export function FinalCTASection() {
         />
         <div className="absolute inset-0 bg-gradient-to-br from-lavender/40 via-ivory/90 to-blush/40 animate-breathe" />
       </div>
-      <GoldParticles count={8} />
+      <GoldSunburst className="absolute top-10 left-4 sm:left-12 opacity-70" size={40} />
+      <GoldSunburst className="absolute bottom-12 right-6 sm:right-16 opacity-60" size={32} />
+      <LotusMotif className="absolute top-16 right-4 sm:right-20 opacity-55" size={44} />
+      <FloralSprig className="absolute bottom-8 left-6 sm:left-20 opacity-65" size={48} />
 
       <Container className="relative z-10">
         <FadeIn>

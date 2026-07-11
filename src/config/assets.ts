@@ -1,6 +1,7 @@
 export const assets = {
   hero: {
     portrait: '/images/hero/hero-portrait.jpg',
+    background: '/images/hero/aesthetic-sky-background-with-moon-clouds-pink-scaled.jpg',
   },
   services: {
     tarot: '/images/services/tarot.jpg',

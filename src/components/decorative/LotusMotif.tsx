@@ -7,24 +7,67 @@ export function LotusMotif({ className = '', size = 48 }: LotusMotifProps) {
   return (
     <svg
       width={size}
-      height={size}
-      viewBox="0 0 48 48"
+      height={size * 0.85}
+      viewBox="0 0 56 48"
       fill="none"
-      className={className}
+      className={`pointer-events-none ${className}`}
       aria-hidden="true"
     >
+      {/* Outer left petals */}
       <path
-        d="M24 38 C24 38 12 30 12 20 C12 14 17 10 24 14 C31 10 36 14 36 20 C36 30 24 38 24 38Z"
+        d="M28 42 C18 38 6 32 4 22 C2 14 10 12 18 18 C22 22 26 30 28 42Z"
         stroke="#D6B57A"
-        strokeWidth="0.8"
+        strokeWidth="1"
         fill="none"
-        opacity="0.7"
+        strokeLinejoin="round"
       />
       <path
-        d="M24 14 C20 8 14 8 14 16 C14 22 24 30 24 30 M24 14 C28 8 34 8 34 16 C34 22 24 30 24 30"
-        stroke="#E9CFCB"
-        strokeWidth="0.6"
+        d="M28 42 C38 38 50 32 52 22 C54 14 46 12 38 18 C34 22 30 30 28 42Z"
+        stroke="#D6B57A"
+        strokeWidth="1"
         fill="none"
+        strokeLinejoin="round"
+      />
+
+      {/* Mid petals */}
+      <path
+        d="M28 40 C20 34 12 26 12 18 C12 10 20 10 26 16 C27 20 28 28 28 40Z"
+        stroke="#D6B57A"
+        strokeWidth="1"
+        fill="none"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M28 40 C36 34 44 26 44 18 C44 10 36 10 30 16 C29 20 28 28 28 40Z"
+        stroke="#D6B57A"
+        strokeWidth="1"
+        fill="none"
+        strokeLinejoin="round"
+      />
+
+      {/* Inner petals */}
+      <path
+        d="M28 38 C24 30 20 22 20 16 C20 10 24 8 28 14 C28 20 28 28 28 38Z"
+        stroke="#D6B57A"
+        strokeWidth="1"
+        fill="none"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M28 38 C32 30 36 22 36 16 C36 10 32 8 28 14 C28 20 28 28 28 38Z"
+        stroke="#D6B57A"
+        strokeWidth="1"
+        fill="none"
+        strokeLinejoin="round"
+      />
+
+      {/* Center petal */}
+      <path
+        d="M28 40 C28 40 24 22 24 14 C24 8 28 4 28 4 C28 4 32 8 32 14 C32 22 28 40 28 40Z"
+        stroke="#D6B57A"
+        strokeWidth="1"
+        fill="none"
+        strokeLinejoin="round"
       />
     </svg>
   )

@@ -4,7 +4,8 @@ import { Section } from '../ui/Section'
 import { Container } from '../ui/Container'
 import { Button } from '../ui/Button'
 import { FadeIn } from '../motion/FadeIn'
-import { MoonIllustration } from '../decorative/MoonIllustration'
+import { LotusMotif } from '../decorative/LotusMotif'
+import { FloralSprig } from '../decorative/FloralSprig'
 
 export function MeetReaderSection() {
   return (
@@ -23,7 +24,8 @@ export function MeetReaderSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-r from-lavender/20 to-transparent" />
             </div>
-            <MoonIllustration className="absolute -bottom-6 -right-6 opacity-60" size={72} />
+            <LotusMotif className="absolute -bottom-4 -right-4 opacity-70" size={56} />
+            <FloralSprig className="absolute -top-4 -left-3 opacity-70" size={48} />
           </FadeIn>
 
           <FadeIn className="order-1 lg:order-2">

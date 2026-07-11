@@ -5,7 +5,8 @@ import { Section } from '../components/ui/Section'
 import { Container } from '../components/ui/Container'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { FadeIn } from '../components/motion/FadeIn'
-import { MoonIllustration } from '../components/decorative/MoonIllustration'
+import { CrystalCluster } from '../components/decorative/CrystalCluster'
+import { GoldSunburst } from '../components/decorative/GoldSunburst'
 import { SEO } from '../components/SEO'
 
 const values = [
@@ -42,7 +43,8 @@ export function About() {
                   className="w-full h-auto object-cover max-h-[700px]"
                 />
               </div>
-              <MoonIllustration className="absolute -bottom-4 -right-4 opacity-50" size={80} />
+              <CrystalCluster className="absolute -bottom-4 -right-4 opacity-75" size={64} />
+              <GoldSunburst className="absolute -top-3 -left-2 opacity-70" size={36} />
             </FadeIn>
             <FadeIn>
               <p className="font-accent text-3xl text-mauve mb-2">About</p>
