@@ -6,12 +6,31 @@ import { buildWhatsAppUrl } from '../../utils/whatsapp'
 import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
 import { CountUp } from '../motion/CountUp'
+import { RotatingWord, usePhraseCycle } from '../motion/RotatingWord'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
+
+const HEADLINE_PHRASES = [
+  { lead: 'Clarity', target: 'Soul' },
+  { lead: 'Clarity', target: 'Mind' },
+  { lead: 'Peace', target: 'Mind', breakAroundFor: true },
+  { lead: 'Peace', target: 'Heart', breakAroundFor: true },
+  { lead: 'Healing', target: 'Heart' },
+  { lead: 'Healing', target: 'Spirit' },
+  { lead: 'Clarity', target: 'Spirit' },
+] as const
 
 export function HeroSection() {
   const waUrl = buildWhatsAppUrl(
     siteConfig.whatsapp.phone,
     siteConfig.whatsapp.defaultMessage,
   )
+  const reduced = useReducedMotion()
+  const phraseIndex = usePhraseCycle({
+    length: HEADLINE_PHRASES.length,
+    intervalMs: 4500,
+    enabled: !reduced,
+  })
+  const current = HEADLINE_PHRASES[phraseIndex]
 
   return (
     <section className="relative min-h-svh flex items-center overflow-hidden pt-20">
@@ -30,10 +49,31 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className="font-heading leading-tight mb-6"
-              style={{ color: 'var(--color-mauve)', fontSize: '92px' }}
+              className="font-heading leading-tight mb-6 text-charcoal"
+              style={{ fontSize: '92px' }}
+              aria-live="polite"
+              aria-atomic="true"
             >
-              Clarity for your Soul
+              <span className="sr-only">
+                {current.lead} for your {current.target}
+              </span>
+              <span aria-hidden="true" className="inline">
+                <RotatingWord word={current.lead} motion="clip" duration={1} />
+                {'breakAroundFor' in current && current.breakAroundFor ? (
+                  <>
+                    {/* Mobile: break before "for" */}
+                    <br className="md:hidden" />
+                    <span className="hidden md:inline"> </span>
+                    for
+                    {/* Desktop: break after "for" */}
+                    <br className="hidden md:block" />
+                    {' your '}
+                  </>
+                ) : (
+                  ' for your '
+                )}
+                <RotatingWord word={current.target} motion="clip" duration={1} />
+              </span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
