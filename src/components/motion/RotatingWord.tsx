@@ -53,19 +53,22 @@ export function RotatingWord({
 
   return (
     <motion.span
-      className={`relative inline-grid overflow-hidden align-baseline ${className}`}
+      className={`relative inline-grid align-baseline -mx-[0.06em] ${className}`}
       style={{ verticalAlign: 'baseline' }}
       layout
       transition={{ layout: { duration: duration * 0.9, ease: [0.22, 1, 0.36, 1] } }}
     >
-      {/* Size to the current word so shorter words (Peace, Light) leave no gap */}
-      <span className="invisible col-start-1 row-start-1 whitespace-nowrap" aria-hidden="true">
+      {/* Padding expands the box so script swashes aren't clipped by clip-path */}
+      <span
+        className="invisible col-start-1 row-start-1 whitespace-nowrap px-[0.16em] py-[0.14em]"
+        aria-hidden="true"
+      >
         {word}
       </span>
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.span
           key={word}
-          className="col-start-1 row-start-1 inline-block whitespace-nowrap"
+          className="col-start-1 row-start-1 inline-block whitespace-nowrap px-[0.16em] py-[0.14em]"
           initial={variants.initial}
           animate={variants.animate}
           exit={variants.exit}

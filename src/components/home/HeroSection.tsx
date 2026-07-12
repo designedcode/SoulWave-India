@@ -35,7 +35,7 @@ export function HeroSection() {
   return (
     <section className="relative min-h-svh flex items-center overflow-hidden pt-20">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-top bg-no-repeat"
         style={{
           backgroundImage: `url(${assets.hero.background})`,
         }}
@@ -49,8 +49,8 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className="font-heading leading-tight mb-6 text-charcoal"
-              style={{ fontSize: '92px' }}
+              className="font-normal leading-[1.3] mb-6 text-charcoal tracking-[0.04em] px-[0.08em]"
+              style={{ fontFamily: 'cursive', fontSize: '92px' }}
               aria-live="polite"
               aria-atomic="true"
             >

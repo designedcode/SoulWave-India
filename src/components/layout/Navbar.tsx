@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { siteConfig } from '../../config/siteConfig'
+import { assets } from '../../config/assets'
 import { Container } from '../ui/Container'
 
 const navLinks = [
@@ -35,47 +36,57 @@ export function Navbar() {
   }, [menuOpen])
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-ivory/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-4 md:py-5'
-      }`}
-    >
-      <Container as="nav" aria-label="Main navigation">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="font-heading text-xl md:text-2xl text-charcoal tracking-wide">
-            {siteConfig.brand}
-          </Link>
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled || menuOpen
+            ? 'bg-ivory/80 backdrop-blur-md shadow-sm py-3'
+            : 'bg-transparent py-4 md:py-5'
+        }`}
+      >
+        <Container as="nav" aria-label="Main navigation">
+          <div className="flex items-center justify-between">
+            <Link to="/" className="shrink-0" aria-label={siteConfig.brand}>
+              <img
+                src={assets.hero.logo}
+                alt={siteConfig.brand}
+                width={180}
+                height={48}
+                className="h-9 md:h-11 w-auto object-contain"
+              />
+            </Link>
 
-          <ul className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <li key={link.to}>
-                <Link
-                  to={link.to}
-                  className="relative font-body text-sm font-medium text-warm-gray hover:text-charcoal transition-colors py-2"
-                >
-                  {link.label}
-                  {location.pathname === link.to && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-gold rounded-full"
-                    />
-                  )}
-                </Link>
-              </li>
-            ))}
-          </ul>
+            <ul className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className="relative font-body text-sm font-medium text-warm-gray hover:text-charcoal transition-colors py-2"
+                  >
+                    {link.label}
+                    {location.pathname === link.to && (
+                      <motion.span
+                        layoutId="nav-underline"
+                        className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-gold rounded-full"
+                      />
+                    )}
+                  </Link>
+                </li>
+              ))}
+            </ul>
 
-          <button
-            type="button"
-            className="md:hidden p-2 min-h-12 min-w-12 flex items-center justify-center text-charcoal"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
-          >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </Container>
+            <button
+              type="button"
+              className="md:hidden p-2 min-h-12 min-w-12 flex items-center justify-center text-charcoal"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </Container>
+      </header>
 
       <AnimatePresence>
         {menuOpen && (
@@ -105,6 +116,6 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   )
 }

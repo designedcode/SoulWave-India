@@ -24,8 +24,8 @@ export const siteConfig = {
     rating: 5,
   },
   reader: {
-    name: 'Priya Sharma',
-    title: 'Tarot Reader & Holistic Wellness Guide',
+    name: 'Mehar Kaur',
+    title: 'Tarot Reader, Psychologist & Holistic Wellness Guide',
   },
 } as const
 

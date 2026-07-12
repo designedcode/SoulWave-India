@@ -4,6 +4,7 @@ interface SectionHeadingProps {
   accent?: string
   align?: 'left' | 'center'
   id?: string
+  className?: string
 }
 
 export function SectionHeading({
@@ -12,11 +13,12 @@ export function SectionHeading({
   accent,
   align = 'center',
   id,
+  className = '',
 }: SectionHeadingProps) {
   const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left'
 
   return (
-    <div className={`mb-10 md:mb-14 max-w-2xl ${alignClass}`}>
+    <div className={`mb-10 md:mb-14 max-w-2xl ${alignClass} ${className}`}>
       {accent && (
         <p className="font-accent text-3xl md:text-4xl text-mauve mb-2">{accent}</p>
       )}
