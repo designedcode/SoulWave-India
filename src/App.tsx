@@ -8,6 +8,8 @@ const Services = lazy(() => import('./pages/Services').then((m) => ({ default: m
 const Testimonials = lazy(() => import('./pages/Testimonials').then((m) => ({ default: m.Testimonials })))
 const About = lazy(() => import('./pages/About').then((m) => ({ default: m.About })))
 const Contact = lazy(() => import('./pages/Contact').then((m) => ({ default: m.Contact })))
+const Terms = lazy(() => import('./pages/Terms').then((m) => ({ default: m.Terms })))
+const Privacy = lazy(() => import('./pages/Privacy').then((m) => ({ default: m.Privacy })))
 
 function PageWrapper({ children }: { children: React.ReactNode }) {
   return (
@@ -33,6 +35,8 @@ function AnimatedRoutes() {
         <Route path="/testimonials" element={<PageWrapper><Testimonials /></PageWrapper>} />
         <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+        <Route path="/terms" element={<PageWrapper><Terms /></PageWrapper>} />
+        <Route path="/privacy" element={<PageWrapper><Privacy /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   )

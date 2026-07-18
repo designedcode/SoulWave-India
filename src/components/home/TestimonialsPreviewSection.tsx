@@ -1,48 +1,44 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Star } from 'lucide-react'
 import { assets } from '../../config/assets'
 import { Section } from '../ui/Section'
 import { Container } from '../ui/Container'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Card } from '../ui/Card'
+import { Modal } from '../ui/Modal'
 import { FadeIn } from '../motion/FadeIn'
 
 const testimonials = [
   {
-    name: 'Ananya R.',
-    location: 'Mumbai',
-    rating: 5,
-    text: 'The reading gave me clarity on a difficult career decision. I felt truly heard and left with a sense of direction I had been searching for.',
-    image: assets.testimonials.client01,
-    type: 'review' as const,
+    src: assets.testimonials.whatsapp01,
+    alt: 'Client WhatsApp testimonial 1',
+    width: 900,
+    height: 1600,
   },
   {
-    name: 'Sarah M.',
-    location: 'London',
-    rating: 5,
-    text: 'Incredibly accurate and compassionate. The blend of psychology and tarot made everything feel grounded, not overwhelming.',
-    image: assets.testimonials.client02,
-    type: 'review' as const,
+    src: assets.testimonials.whatsapp02,
+    alt: 'Client WhatsApp testimonial 2',
+    width: 720,
+    height: 1600,
   },
   {
-    name: 'WhatsApp Review',
-    location: 'Client message',
-    rating: 5,
-    text: '"Thank you for the healing session — I slept peacefully for the first time in weeks. Grateful for your gentle guidance."',
-    image: null,
-    type: 'whatsapp' as const,
+    src: assets.testimonials.whatsapp03,
+    alt: 'Client WhatsApp testimonial 3',
+    width: 720,
+    height: 1600,
   },
   {
-    name: 'Instagram DM',
-    location: 'Client message',
-    rating: 5,
-    text: '"Your moonology reading was spot on! Everything you said about this lunar cycle came true. Already booked my next session."',
-    image: null,
-    type: 'instagram' as const,
+    src: assets.testimonials.whatsapp04,
+    alt: 'Client WhatsApp testimonial 4',
+    width: 720,
+    height: 1600,
   },
 ]
 
 export function TestimonialsPreviewSection() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const active = activeIndex !== null ? testimonials[activeIndex] : null
+
   return (
     <Section ariaLabelledby="testimonials-heading">
       <Container>
@@ -53,35 +49,24 @@ export function TestimonialsPreviewSection() {
           subtitle="Real stories from people who found clarity, comfort, and confidence through Soul Wave India."
         />
         <FadeIn>
-          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 md:gap-6">
-            {testimonials.map((t) => (
-              <Card key={t.name} className="min-w-[280px] md:min-w-0 snap-center shrink-0 md:shrink">
-                <div className="p-6">
-                  {t.image ? (
-                    <img
-                      src={t.image}
-                      alt={`${t.name} profile`}
-                      width={48}
-                      height={48}
-                      loading="lazy"
-                      className="w-12 h-12 rounded-full object-cover mb-4 border-2 border-gold/30"
-                    />
-                  ) : (
-                    <div className={`w-12 h-12 rounded-full mb-4 flex items-center justify-center text-xs font-medium ${
-                      t.type === 'whatsapp' ? 'bg-whatsapp/10 text-whatsapp' : 'bg-lavender/30 text-mauve'
-                    }`}>
-                      {t.type === 'whatsapp' ? 'WA' : 'IG'}
-                    </div>
-                  )}
-                  <div className="flex gap-0.5 text-gold mb-3">
-                    {Array.from({ length: t.rating }).map((_, i) => (
-                      <Star key={i} size={14} fill="currentColor" aria-hidden="true" />
-                    ))}
-                  </div>
-                  <p className="text-warm-gray text-sm leading-relaxed mb-4 italic">&ldquo;{t.text}&rdquo;</p>
-                  <p className="font-heading text-charcoal">{t.name}</p>
-                  <p className="text-xs text-warm-gray">{t.location}</p>
-                </div>
+          <div className="grid grid-cols-2 gap-3 sm:gap-6">
+            {testimonials.map((t, index) => (
+              <Card key={t.src} className="aspect-square w-full min-w-0" hover={false}>
+                <button
+                  type="button"
+                  className="block h-full w-full cursor-pointer transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                  aria-label={`View ${t.alt}`}
+                  onClick={() => setActiveIndex(index)}
+                >
+                  <img
+                    src={t.src}
+                    alt={t.alt}
+                    width={t.width}
+                    height={t.height}
+                    loading="lazy"
+                    className="block h-full w-full object-cover"
+                  />
+                </button>
               </Card>
             ))}
           </div>
@@ -95,6 +80,22 @@ export function TestimonialsPreviewSection() {
           </div>
         </FadeIn>
       </Container>
+
+      <Modal
+        open={active !== null}
+        onClose={() => setActiveIndex(null)}
+        title="Client Testimonial"
+      >
+        {active ? (
+          <img
+            src={active.src}
+            alt={active.alt}
+            width={active.width}
+            height={active.height}
+            className="mx-auto block h-auto w-full max-w-md"
+          />
+        ) : null}
+      </Modal>
     </Section>
   )
 }

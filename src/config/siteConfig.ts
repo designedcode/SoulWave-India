@@ -8,8 +8,10 @@ export const siteConfig = {
     defaultMessage: 'Hi Soul Wave India, I would like to book a reading.',
   },
   social: {
-    instagram: 'https://instagram.com/placeholder',
+    instagram: 'https://www.instagram.com/tarotsoulwaveindia/',
     facebook: 'https://facebook.com/placeholder',
+    linkedin:
+      'https://www.linkedin.com/in/mehar-kaur-rci-lic%E2%80%99d-consultant-child-psych-gov-of-india-7b566917a/',
   },
   booking: {
     calendly: 'https://calendly.com/placeholder',

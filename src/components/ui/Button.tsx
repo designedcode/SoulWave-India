@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react'
+import { type MouseEventHandler, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
@@ -11,7 +11,7 @@ interface ButtonProps {
   size?: ButtonSize
   href?: string
   to?: string
-  onClick?: () => void
+  onClick?: MouseEventHandler<HTMLElement>
   type?: 'button' | 'submit'
   className?: string
   external?: boolean
@@ -69,6 +69,7 @@ export function Button({
       <motion.a
         href={href}
         className={classes}
+        onClick={onClick}
         {...motionProps}
         {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         aria-label={ariaLabel}

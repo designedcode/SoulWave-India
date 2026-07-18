@@ -5,6 +5,7 @@ import { Container } from '../components/ui/Container'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { Card } from '../components/ui/Card'
 import { FadeIn } from '../components/motion/FadeIn'
+import { InstagramHighlightsSection } from '../components/home/InstagramHighlightsSection'
 import { SEO } from '../components/SEO'
 
 const testimonials = [
@@ -46,51 +47,52 @@ export function Testimonials() {
       <SEO path="/testimonials" title="Testimonials | Soul Wave India"
         description="Read authentic client reviews and stories from Soul Wave India tarot and wellness sessions."
       />
-      <Section className="pt-28 md:pt-32">
+      <Section className="pt-28 md:pt-32 pb-16 md:pb-24">
         <Container>
           <SectionHeading
             accent="Client Stories"
             title="Testimonials"
             subtitle="Honest reflections from people who trusted Soul Wave India with their most personal questions."
           />
+          <InstagramHighlightsSection />
           <FadeIn>
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-              {testimonials.map((t) => (
-                <Card key={t.name + t.location} className="break-inside-avoid">
-                  <div className="p-6">
-                    {t.type === 'video' ? (
-                      <div className="flex items-center justify-center h-32 bg-lavender/20 rounded-xl mb-4">
-                        <Play size={32} className="text-mauve" aria-hidden="true" />
-                        <span className="sr-only">Video testimonial placeholder</span>
+              <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                {testimonials.map((t) => (
+                  <Card key={t.name + t.location} className="break-inside-avoid">
+                    <div className="p-6">
+                      {t.type === 'video' ? (
+                        <div className="flex items-center justify-center h-32 bg-lavender/20 rounded-xl mb-4">
+                          <Play size={32} className="text-mauve" aria-hidden="true" />
+                          <span className="sr-only">Video testimonial placeholder</span>
+                        </div>
+                      ) : t.image ? (
+                        <img
+                          src={t.image}
+                          alt={t.name}
+                          width={48}
+                          height={48}
+                          loading="lazy"
+                          className="w-12 h-12 rounded-full object-cover mb-4 border-2 border-gold/30"
+                        />
+                      ) : (
+                        <div className={`w-12 h-12 rounded-full mb-4 flex items-center justify-center text-xs font-bold ${
+                          t.type === 'whatsapp' ? 'bg-whatsapp/10 text-whatsapp' : 'bg-lavender/30 text-mauve'
+                        }`}>
+                          {t.type === 'whatsapp' ? 'WA' : 'IG'}
+                        </div>
+                      )}
+                      <div className="flex gap-0.5 text-gold mb-3">
+                        {Array.from({ length: t.rating }).map((_, i) => (
+                          <Star key={i} size={14} fill="currentColor" aria-hidden="true" />
+                        ))}
                       </div>
-                    ) : t.image ? (
-                      <img
-                        src={t.image}
-                        alt={t.name}
-                        width={48}
-                        height={48}
-                        loading="lazy"
-                        className="w-12 h-12 rounded-full object-cover mb-4 border-2 border-gold/30"
-                      />
-                    ) : (
-                      <div className={`w-12 h-12 rounded-full mb-4 flex items-center justify-center text-xs font-bold ${
-                        t.type === 'whatsapp' ? 'bg-whatsapp/10 text-whatsapp' : 'bg-lavender/30 text-mauve'
-                      }`}>
-                        {t.type === 'whatsapp' ? 'WA' : 'IG'}
-                      </div>
-                    )}
-                    <div className="flex gap-0.5 text-gold mb-3">
-                      {Array.from({ length: t.rating }).map((_, i) => (
-                        <Star key={i} size={14} fill="currentColor" aria-hidden="true" />
-                      ))}
+                      <p className="text-warm-gray text-sm leading-relaxed mb-4 italic">&ldquo;{t.text}&rdquo;</p>
+                      <p className="font-heading text-charcoal">{t.name}</p>
+                      <p className="text-xs text-warm-gray">{t.location}</p>
                     </div>
-                    <p className="text-warm-gray text-sm leading-relaxed mb-4 italic">&ldquo;{t.text}&rdquo;</p>
-                    <p className="font-heading text-charcoal">{t.name}</p>
-                    <p className="text-xs text-warm-gray">{t.location}</p>
-                  </div>
-                </Card>
-              ))}
-            </div>
+                  </Card>
+                ))}
+              </div>
           </FadeIn>
         </Container>
       </Section>

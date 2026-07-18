@@ -1,6 +1,6 @@
 export const assets = {
   hero: {
-    portrait: '/images/hero/hero-portrait.jpg',
+    portrait: '/images/hero/hero-section.png',
     background: '/images/hero/aesthetic-sky-background-with-moon-clouds-pink-scaled.jpg',
     logo: '/images/hero/Logo.png',
   },
@@ -14,9 +14,13 @@ export const assets = {
   testimonials: {
     client01: '/images/testimonials/client-01.jpg',
     client02: '/images/testimonials/client-02.jpg',
+    whatsapp01: '/images/testimonials/whatsapp-testimonial.jpeg',
+    whatsapp02: '/images/testimonials/whatsapp-testimonial-02.jpeg',
+    whatsapp03: '/images/testimonials/whatsapp-testimonial-03.jpeg',
+    whatsapp04: '/images/testimonials/whatsapp-testimonial-04.jpeg',
   },
   about: {
-    portrait: '/images/about/reader-portrait.jpg',
+    portrait: '/images/about/reader.png',
   },
   decorative: {
     ctaBackground: '/images/decorative/cta-background.jpg',

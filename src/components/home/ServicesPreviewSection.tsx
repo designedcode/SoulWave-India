@@ -91,8 +91,6 @@ const services: {
 ]
 
 export function ServicesPreviewSection() {
-  const waUrl = buildWhatsAppUrl(siteConfig.whatsapp.phone, 'Hi, I would like to book a session.')
-
   return (
     <Section id="services-preview" ariaLabelledby="services-heading">
       <Container>
@@ -105,33 +103,40 @@ export function ServicesPreviewSection() {
         />
 
         <StaggerChildren className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 sm:gap-x-10 sm:gap-y-16 lg:gap-x-12 lg:gap-y-0">
-          {services.map((service) => (
-            <StaggerItem key={service.title}>
-              <a
-                href={waUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex h-full flex-col items-center text-center px-6 sm:px-4 transition-transform duration-300 ease-out hover:-translate-y-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold rounded-sm"
-                aria-label={`Book ${service.title}`}
-              >
-                <span className="text-mauve/80 transition-all duration-300 ease-out group-hover:text-mauve group-hover:scale-105">
-                  {service.icon}
-                </span>
-                <h3 className="font-heading text-2xl md:text-3xl text-charcoal mb-3 tracking-wide">
-                  {service.title}
-                </h3>
-                <p className="font-body text-warm-gray text-sm leading-relaxed mb-7 md:mb-8 max-w-[280px]">
-                  {service.description}
-                </p>
-                <span
-                  className="mt-auto text-charcoal text-xl transition-transform duration-300 ease-out group-hover:translate-x-1.5 group-hover:text-mauve"
-                  aria-hidden="true"
+          {services.map((service) => {
+            const waUrl = buildWhatsAppUrl(
+              siteConfig.whatsapp.phone,
+              `Hi Soul Wave India, I would like to enquire about ${service.title}.`,
+            )
+
+            return (
+              <StaggerItem key={service.title}>
+                <a
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-full flex-col items-center text-center px-6 sm:px-4 transition-transform duration-300 ease-out hover:-translate-y-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold rounded-sm"
+                  aria-label={`Enquire about ${service.title}`}
                 >
-                  →
-                </span>
-              </a>
-            </StaggerItem>
-          ))}
+                  <span className="text-mauve/80 transition-all duration-300 ease-out group-hover:text-mauve group-hover:scale-105">
+                    {service.icon}
+                  </span>
+                  <h3 className="font-heading text-2xl md:text-3xl text-charcoal mb-3 tracking-wide">
+                    {service.title}
+                  </h3>
+                  <p className="font-body text-warm-gray text-sm leading-relaxed mb-7 md:mb-8 max-w-[280px]">
+                    {service.description}
+                  </p>
+                  <span
+                    className="mt-auto text-charcoal text-xl transition-transform duration-300 ease-out group-hover:translate-x-1.5 group-hover:text-mauve"
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </a>
+              </StaggerItem>
+            )
+          })}
         </StaggerChildren>
       </Container>
     </Section>

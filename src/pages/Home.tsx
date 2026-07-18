@@ -5,7 +5,6 @@ import { TestimonialsPreviewSection } from '../components/home/TestimonialsPrevi
 import { MeetReaderSection } from '../components/home/MeetReaderSection'
 import { BookingProcessSection } from '../components/home/BookingProcessSection'
 import { FAQSection } from '../components/home/FAQSection'
-import { InstagramHighlightsSection } from '../components/home/InstagramHighlightsSection'
 import { FinalCTASection } from '../components/home/FinalCTASection'
 import { SectionDivider } from '../components/decorative/SectionDivider'
 import { SEO } from '../components/SEO'
@@ -23,7 +22,6 @@ export function Home() {
       <MeetReaderSection />
       <BookingProcessSection />
       <FAQSection />
-      <InstagramHighlightsSection />
       <FinalCTASection />
     </>
   )

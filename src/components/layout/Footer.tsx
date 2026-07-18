@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Mail, MessageCircle } from 'lucide-react'
 import { InstagramIcon } from '../ui/InstagramIcon'
+import { LinkedInIcon } from '../ui/LinkedInIcon'
 import { siteConfig } from '../../config/siteConfig'
 import { buildWhatsAppUrl } from '../../utils/whatsapp'
 import { Container } from '../ui/Container'
@@ -39,6 +40,17 @@ export function Footer() {
               </li>
               <li>
                 <a
+                  href={siteConfig.social.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-ivory/70 hover:text-gold transition-colors min-h-12"
+                >
+                  <LinkedInIcon size={18} />
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
                   href={waUrl}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -64,12 +76,12 @@ export function Footer() {
             <p className="font-heading text-lg text-ivory mb-4">Legal</p>
             <ul className="space-y-3">
               <li>
-                <Link to="/contact" className="text-sm text-ivory/70 hover:text-gold transition-colors">
+                <Link to="/privacy" className="text-sm text-ivory/70 hover:text-gold transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-sm text-ivory/70 hover:text-gold transition-colors">
+                <Link to="/terms" className="text-sm text-ivory/70 hover:text-gold transition-colors">
                   Terms of Service
                 </Link>
               </li>

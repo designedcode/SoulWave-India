@@ -8,6 +8,7 @@ import { Container } from '../components/ui/Container'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { Button } from '../components/ui/Button'
 import { FadeIn } from '../components/motion/FadeIn'
+import { FAQSection } from '../components/home/FAQSection'
 import { SEO } from '../components/SEO'
 
 export function Contact() {
@@ -137,6 +138,11 @@ export function Contact() {
           </div>
         </Container>
       </Section>
+
+      <FAQSection
+        className="bg-rose-quartz/20 pt-8 md:pt-12"
+        headingId="contact-faq-heading"
+      />
     </>
   )
 }
