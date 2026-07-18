@@ -54,8 +54,7 @@ export function Testimonials() {
             title="Testimonials"
             subtitle="Honest reflections from people who trusted Soul Wave India with their most personal questions."
           />
-          <InstagramHighlightsSection />
-          <FadeIn>
+          <FadeIn className="mb-12 md:mb-16">
               <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
                 {testimonials.map((t) => (
                   <Card key={t.name + t.location} className="break-inside-avoid">
@@ -94,6 +93,7 @@ export function Testimonials() {
                 ))}
               </div>
           </FadeIn>
+          <InstagramHighlightsSection />
         </Container>
       </Section>
     </>
